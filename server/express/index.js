@@ -114,8 +114,8 @@ agua,
 refeicoes,
 limpeza,
 leitura} = req.body
-  const obj = {}
-  obj[dayId] = {
+  const obj= {
+    "dayId": dayId,
     "exercicio":exercicio,
     "dorCabeca":dorCabeca,
     "codar":codar,
@@ -156,6 +156,6 @@ app.get("/reports/:email", async(req, res) => {
 });
 
 
-app.listen(3333, function () {
+app.listen(process.env.PORT || 3333, function () {
   console.log('Listening on port 3333...')
 })
