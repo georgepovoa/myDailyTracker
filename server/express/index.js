@@ -4,7 +4,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-var cors = require('cors')
+const cors = require('cors')
 
 const User = require("./model/user");
 const auth = require("./middleware/auth");
@@ -19,9 +19,7 @@ app.post("/register", async (req, res) => {
   try {
     // Get user input
     const { email, password } = req.body;
-    console.log(email,password)
 
-    // Validate user input
     if (!(email && password)) {
       res.status(400).send("All input is required");
     }
@@ -95,27 +93,23 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/welcome", auth, (req, res) => {
-  res.status(200).send("Welcome 🙌 ");
-});
-
 app.post("/report",async(req,res) =>{
   var exist_day = false
  const {userEmail,
-dayId,
-exercicio,
-dorCabeca,
-codar,
-acordar,
-sleepTime,
-jogar,
-role,
-agua,
-refeicoes,
-limpeza,
-leitura} = req.body
-  const obj= {
-    "dayId": dayId,
+        dayId,
+        exercicio,
+        dorCabeca,
+        codar,
+        acordar,
+        sleepTime,
+        jogar,
+        role,
+        agua,
+        refeicoes,
+        limpeza,
+        leitura} = req.body
+  const obj = {
+    "dayID" : dayId,
     "exercicio":exercicio,
     "dorCabeca":dorCabeca,
     "codar":codar,
@@ -142,7 +136,7 @@ leitura} = req.body
   res.status(200).send(user)
   }
   else{
-    res.status(200).send("já tem mano")
+    res.status(200).send("já tem, mano")
   }
 })
 
